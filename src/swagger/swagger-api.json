@@ -1,0 +1,78 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Github repositories with branches",
+    "description": "Project Application API"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Repository",
+      "description": "API for repository in the Github"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/repo": {
+      "get": {
+        "tags": [
+          "Repository"
+        ],
+        "summary": "Get repositories and branches for user",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Repository"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Repository": {
+      "required": ["name"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "User": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "number"
+            },
+            "login": {
+              "type": "string"
+            }
+          }
+        },
+        "Branch": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "lastCommitSha": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
