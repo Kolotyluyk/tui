@@ -1,9 +1,14 @@
 import Repository from "../model/Repository";
-import {Branch} from "../model/Branch";
 import branchService from "../service/branch.service";
 import repoUtils from "../util/repo.util";
+import repoMapper from "../mapper/repo.mapper";
 
-
+/**
+ * This is method retrieve user's repos with branches:
+ *
+ * @param name - user name
+ * @return Promise<Repository[]>
+ */
 async function getRepoFullInfo(name: string): Promise<Repository[]> {
     return await repoUtils.getUserReposNotFork(name)
         .then(repos => Promise.all(repos
@@ -11,25 +16,19 @@ async function getRepoFullInfo(name: string): Promise<Repository[]> {
             .map(r => fullRepoJsonToRepo(r))));
 }
 
-async function fullRepoJsonToRepo(fullRepo: any): Promise<any> {
+/**
+ * This is method populate repo
+ * @param fullRepo
+ * @return Promise<Repository>
+ */
+async function fullRepoJsonToRepo(fullRepo: any): Promise<Repository> {
     const login = fullRepo?.owner.login;
     const repoName = fullRepo?.name;
     const userId = fullRepo?.owner?.id;
     return branchService.getBranches(login, repoName)
         .then(branches => {
-        return fillInRepository(login, userId, repoName, branches);
+        return repoMapper.fillInRepository(login, userId, repoName, branches);
     });
-}
-
-function fillInRepository(login: string, userId: number, repoName: string, branches: Branch[]): Repository {
-    return {
-        name: repoName,
-        user: {
-            id: userId,
-            login: login
-        },
-        branches: branches
-    };
 }
 
 export default {getRepoFullInfo, fullRepoToRepo: fullRepoJsonToRepo};

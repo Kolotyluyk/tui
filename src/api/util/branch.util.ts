@@ -1,7 +1,14 @@
 import axios from "axios";
 
-function getBranches(login: string, repo: string) {
-    const url = `https://api.github.com/repos/${login}/${repo}/branches`;
+
+/**
+ * This is method retrieve branches info by name
+ *
+ * @param name - user name
+ * @return Promise<User>
+ */
+function getBranches(name: string, repo: string) {
+    const url = `https://api.github.com/repos/${name}/${repo}/branches`;
     return axios.get(url);
 
 }
