@@ -1,15 +1,11 @@
-import RepoService from "../../api/service/repo.service";
 import Repository from "../../api/model/Repository";
-import {Branch} from "../../api/model/Branch";
 import {User} from "../../api/model/User";
+import {Branch} from "../../api/model/Branch";
+import RepoService from "../../api/service/repo.service";
 
-jest.mock("../../api/util/repo.util");
-jest.mock("../../api/service/branch.service");
+jest.mock("../../api/service/repo.service");
 
-beforeEach(() => {
-});
-
-test('test user with repo and branch', () => {
+test('test ', () => {
     const expected: Repository[] = [{
         name: 'master',
         user: {
@@ -21,7 +17,7 @@ test('test user with repo and branch', () => {
             lastCommitSha: 'lastCommitSha',
         }] as Branch[]
     }] as Repository[]
-    return expect(RepoService.getRepoFullInfo("1")).resolves.toEqual(expected);
+    return expect(RepoService.getRepoFullInfo("login")).resolves.toEqual(expected);
 })
 
 test('test user without repo ', () => {

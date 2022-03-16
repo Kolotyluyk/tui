@@ -13,7 +13,7 @@ const users = {
     }
 };
 
- function getUser(name: string): Promise<User> {
+function getUser(name: string): Promise<User> {
 
     return new Promise((resolve, reject) =>
         // @ts-ignore
