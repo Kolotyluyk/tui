@@ -29,7 +29,7 @@ const repos = {
 
 }
 
-async function getRepoFullInfo(name: string): Promise<Repository[]> {
+async function getRepoFullInfo(name: string, page: number, per_page: number): Promise<Repository[]> {
     return new Promise((resolve, reject) =>
         // @ts-ignore
         resolve(repos[name]));

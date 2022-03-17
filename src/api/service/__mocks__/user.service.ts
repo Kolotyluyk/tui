@@ -3,14 +3,22 @@
 import {User} from "../../model/User";
 
 const users = {
-    "1": {
-        id: 1,
-        login: 'login'
+    "login": {
+        data: {
+            id: 1,
+            login: 'login'
+        }
     },
-    "2": {
-        id: 2,
-        login: 'login2'
+    "login2": {
+        data: {
+            id: 2,
+            login: 'login2'
+        }
+    },
+    "user": {
+        status: 404
     }
+
 };
 
 function getUser(name: string): Promise<User> {

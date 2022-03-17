@@ -1,27 +1,43 @@
-import Repository from "../../api/model/Repository";
-import {User} from "../../api/model/User";
-import {Branch} from "../../api/model/Branch";
-import RepoService from "../../api/service/repo.service";
+const request = require('supertest');
+const router = require('../../api/routes');
+
+beforeEach((): void => {
+    jest.setTimeout(60000);
+});
 
 jest.mock("../../api/service/repo.service");
+jest.mock("../../api/service/user.service");
 
-test('test ', () => {
-    const expected: Repository[] = [{
-        name: 'master',
-        user: {
-            id: 1,
-            login: 'login'
-        } as User,
-        branches: [{
-            name: 'master',
-            lastCommitSha: 'lastCommitSha',
-        }] as Branch[]
-    }] as Repository[]
-    return expect(RepoService.getRepoFullInfo("login")).resolves.toEqual(expected);
+test('test invalid Accept', () => {
+
+    it("", async () => {
+        const result = await request(router)
+            .get('/repo/user')
+            .query({page: 1, per_page: 100})
+            .set('Accept', 'application/xml')
+            .expect(406);
+    });
 })
 
-test('test user without repo ', () => {
-    const expected: Repository[] = [] as Repository[]
+test('test invalid user', () => {
 
-    return expect(RepoService.getRepoFullInfo("2")).resolves.toEqual(expected);
+    it("", async () => {
+        const result = await request(router)
+            .get('/repo/user')
+            .query({page: 1, per_page: 100})
+            .set('Accept', 'application/json')
+            .expect(404);
+    });
+})
+
+
+test('test invalid user', () => {
+
+    it("", async () => {
+        const result = await request(router)
+            .get('/repo/user')
+            .query({page: 1, per_page: 100})
+            .set('Accept', 'application/json')
+            .expect(404);
+    });
 })

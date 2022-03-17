@@ -21,11 +21,11 @@ test('test user with repo and branch', () => {
             lastCommitSha: 'lastCommitSha',
         }] as Branch[]
     }] as Repository[]
-    return expect(RepoService.getRepoFullInfo("1")).resolves.toEqual(expected);
+    return expect(RepoService.getRepoFullInfo("1", 1, 100)).resolves.toEqual(expected);
 })
 
 test('test user without repo ', () => {
     const expected: Repository[] = [] as Repository[]
 
-    return expect(RepoService.getRepoFullInfo("2")).resolves.toEqual(expected);
+    return expect(RepoService.getRepoFullInfo("2", 1, 100)).resolves.toEqual(expected);
 })

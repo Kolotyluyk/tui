@@ -7,7 +7,7 @@ import {User} from "../model/User";
  * @param name - user name
  * @return Promise<User>
  */
-function getUser(name: string): Promise<User> {
+function getUser(name: string) {
     return userUtil.getUser(name);
 }
 
