@@ -14,10 +14,10 @@ const getUserReposByName = async (req: Request, res: Response) => {
     const name = req.params.username;
 
     // @ts-ignore
-    const page: number = parseInt(req.query?.page) | 1;
+    const page: number = +parseInt(req.query?.page);
 
     // @ts-ignore
-    const per_page: number = parseInt(req.query?.per_page) | 100;
+    const per_page: number = +parseInt(req.query?.per_page);
 
     const acceptHeader = req.headers.accept;
     if (acceptHeader != 'application/json') {
@@ -33,7 +33,6 @@ const getUserReposByName = async (req: Request, res: Response) => {
             Message: 'User does not exist'
         });
     }
-
 
     service.getRepoFullInfo(name, page, per_page)
         .then((data: any) => {
