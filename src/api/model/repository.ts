@@ -1,5 +1,5 @@
-import {User} from "./User";
-import {Branch} from "./Branch";
+import {User} from "./user";
+import {Branch} from "./branch";
 
 
 export default interface Repository {

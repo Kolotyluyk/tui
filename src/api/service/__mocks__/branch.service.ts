@@ -1,7 +1,7 @@
 'use strict'
 
 
-import {Branch} from "../../model/Branch";
+import {Branch} from "../../model/branch";
 
 const branches = {
     master: {

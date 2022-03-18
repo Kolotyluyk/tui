@@ -1,5 +1,5 @@
 import userUtil from "../util/user.util"
-import {User} from "../model/User";
+import {User} from "../model/user";
 
 /**
  * This is method retrieve user info by name

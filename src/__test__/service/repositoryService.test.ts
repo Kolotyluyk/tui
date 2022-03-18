@@ -1,7 +1,7 @@
 import RepoService from "../../api/service/repo.service";
-import Repository from "../../api/model/Repository";
-import {Branch} from "../../api/model/Branch";
-import {User} from "../../api/model/User";
+import Repository from "../../api/model/repository";
+import {Branch} from "../../api/model/branch";
+import {User} from "../../api/model/user";
 
 jest.mock("../../api/util/repo.util");
 jest.mock("../../api/service/branch.service");

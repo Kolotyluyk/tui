@@ -1,4 +1,4 @@
-import Repository from "../model/Repository";
+import Repository from "../model/repository";
 import branchService from "../service/branch.service";
 import repoUtils from "../util/repo.util";
 import repoMapper from "../mapper/repo.mapper";

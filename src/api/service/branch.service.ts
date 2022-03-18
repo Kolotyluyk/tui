@@ -1,4 +1,4 @@
-import {Branch} from "../model/Branch";
+import {Branch} from "../model/branch";
 import branchUtil from "../util/branch.util";
 import branchMapper from '../mapper/branch.mapper';
 

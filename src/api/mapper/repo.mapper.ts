@@ -1,5 +1,5 @@
-import {Branch} from "../model/Branch";
-import Repository from "../model/Repository";
+import {Branch} from "../model/branch";
+import Repository from "../model/repository";
 
 /**
  * This is method populate Repository

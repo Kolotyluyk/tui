@@ -1,5 +1,5 @@
 import userService from "../../api/service/user.service";
-import {User} from "../../api/model/User";
+import {User} from "../../api/model/user";
 
 jest.mock("../../api/util/user.util");
 

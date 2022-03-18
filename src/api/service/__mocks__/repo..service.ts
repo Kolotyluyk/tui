@@ -1,6 +1,6 @@
-import Repository from "../../model/Repository";
-import {User} from "../../model/User";
-import {Branch} from "../../model/Branch";
+import Repository from "../../model/repository";
+import {User} from "../../model/user";
+import {Branch} from "../../model/branch";
 
 const repos = {
     "login": [{

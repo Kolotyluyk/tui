@@ -1,5 +1,5 @@
 import branchService from "../../api/service/branch.service";
-import {Branch} from "../../api/model/Branch";
+import {Branch} from "../../api/model/branch";
 
 jest.mock("../../api/util/branch.util");
 

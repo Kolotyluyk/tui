@@ -1,6 +1,6 @@
 'use strict'
 
-import {User} from "../../model/User";
+import {User} from "../../model/user";
 
 const users = {
     "login": {

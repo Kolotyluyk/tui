@@ -1,4 +1,4 @@
-import {Branch} from "../model/Branch";
+import {Branch} from "../model/branch";
 /**
  * This is method populate Branch
  * @param branchJson -  retrieved branch value from github
