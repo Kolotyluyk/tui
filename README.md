@@ -35,13 +35,21 @@ To view the route and its input / output data, follow the link to the swagger do
 
 The main request to get all the repositories is as follows: "http://localhost:3000/repo/{userName}?page={page}&per_page={per_page}"
 
+Given not {header “Accept: application/json”}, you will get 406 response
+Given not existing github {userName}, you will get 404 response
+
 First of all service check if user exist 
 Then get user repositories and in the 
 finally it retrieves data of branches last commit
  
 ##Limitation:
 Max repos per page is 100.
-Max branch is 100 
+Max branch is 100.
+
+Github API has a limit on the number of requests.
+For an unauthorized user - 60 per hour
+For an authorized user - 5000 per hour
+So you can send your OAuth2 token from your github account as {header “Authorization: #########”} to make authorized requests. You can create your OAuth2 token by following the link https://github.com/settings/tokens
 
 
 

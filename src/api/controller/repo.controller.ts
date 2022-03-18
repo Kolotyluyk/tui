@@ -1,6 +1,7 @@
 import {Request, Response} from "express";
 import userService from "../service/user.service";
 import service from "../service/repo.service"
+import headerBuilder from "../service/header-builder";
 
 /**
  * This is method retrieve user's repos with branches:
@@ -26,7 +27,10 @@ const getUserReposByName = async (req: Request, res: Response) => {
             Message: `Unsupported 'Accept' header: ${acceptHeader}. Must accept 'application/json'`
         })
     }
-    const userData = await userService.getUser(name);
+
+    const headers = headerBuilder.getHeadersForGitHub(req.headers);
+
+    const userData = await userService.getUser(name, headers);
     if (userData.status === 404) {
         return res.status(404).json({
             status: 404,
@@ -34,10 +38,15 @@ const getUserReposByName = async (req: Request, res: Response) => {
         });
     }
 
-    service.getRepoFullInfo(name, page, per_page)
+    service.getRepoFullInfo(name, page, per_page, headers)
         .then((data: any) => {
             return res.status(200).json(data);
-        }).catch(error => console.log(error));
+        }).catch(error => {
+        return res.status(500).json({
+            status: 500,
+            Message: 'Server can not processing data for this user'
+        });
+    });
 }
 
 export default {getUserReposByName}
